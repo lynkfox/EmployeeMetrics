@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeMetricsUnitTests", "EmployeeMetricsUnitTests\EmployeeMetricsUnitTests.csproj", "{EAAC070A-9369-4A54-B750-B13CAC1C4D99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMTests", "EmployeeMetricsUnitTests\EMTests.csproj", "{EAAC070A-9369-4A54-B750-B13CAC1C4D99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMLib", "EMLib\EMLib.csproj", "{29D3476B-2DC2-44C8-9169-360E103F16B5}"
 EndProject

@@ -1,9 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EmployeeMetricsUnitTests
+namespace EMUnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class DailyMetricsUnitTests
     {
         [TestMethod]
         public void TestMethod1()
