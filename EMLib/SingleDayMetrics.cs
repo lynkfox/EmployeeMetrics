@@ -18,7 +18,16 @@ namespace EMLib
 
         public static double AdjustDeliveryHourForTravelTime(SingleEmployeeMetrics singleEmpData)
         {
-            return 7.12;
+            var expectedRouteTravelTimes = new Dictionary<int, double>
+            {
+                { 227, .75 },
+                { 458, 1 }
+            };
+
+            singleEmpData.EstimatedTimeFromTerminal = expectedRouteTravelTimes[singleEmpData.RouteNumber];
+            singleEmpData.TotalTimeDriving = Math.Round((singleEmpData.EndTime-singleEmpData.StartTime) - singleEmpData.EstimatedTimeFromTerminal * 2, 2);
+
+            return singleEmpData.TotalTimeDriving;
         }
     }
 }
