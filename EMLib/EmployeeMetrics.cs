@@ -1,6 +1,6 @@
 ﻿namespace EMLib
 {
-    public class EmployeeMetrics
+    public class SingleEmployeeMetrics
     {
         public string Name { get; set; }
         public double StartTime { get; set; }
@@ -11,6 +11,7 @@
         public int StopsPerHour { get; set; }
         public int TotalStops { get; set; }
 
-
+        public double MilesDriven { get; set; }
+        public double AdjustedDeliveryTime { get; set; }
     }
 }

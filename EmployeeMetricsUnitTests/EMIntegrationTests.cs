@@ -9,9 +9,18 @@ namespace EMIntegrationTests
     public class EMIntegrationTests
     {
         [TestMethod]
+        public void InputDataFromDailyServiceWorksheetAsCSVfile()
+        {
+            // To Be Written
+
+            //Test That is a .csv filre
+            //Test that it contains an employee, starttime,endtime, stopcount, miles, and routenumber
+        }
+
+        [TestMethod]
         public void IntegrationOutputTestForDailyMetrics()
         {
-            DailyMetrics MetricsData = CollectData();
+            SingleDayMetrics MetricsData = CollectData();
 
             MetricsData.RunMetrics();
 
@@ -25,12 +34,12 @@ namespace EMIntegrationTests
             
         }
 
-        private DailyMetrics CollectData()
+        private SingleDayMetrics CollectData()
         {
-            var Metrics = new DailyMetrics();
+            var Metrics = new SingleDayMetrics();
 
             Metrics.Employees.Add("Goh, Anthony T.");
-            var dailyData = new EmployeeMetrics()
+            var dailyData = new SingleEmployeeMetrics()
             {
                 Name = "Goh, Anthony T.",
                 StartTime = 10,
