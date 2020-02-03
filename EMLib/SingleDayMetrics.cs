@@ -46,14 +46,19 @@ namespace EMLib
             throw new NotImplementedException();
         }
 
-        public double AdjustDeliveryHourForTravelTime(SingleEmployeeMetrics singleEmpData)
+        public double AdjustDeliveryHourForTravelTime(SingleEmployeeMetrics employeeMetrics)
         {
             
 
-            singleEmpData.EstimatedTimeFromTerminal = expectedRouteTravelTimes[singleEmpData.RouteNumber];
-            singleEmpData.TotalTimeDriving = Math.Round((singleEmpData.EndTime-singleEmpData.StartTime) - singleEmpData.EstimatedTimeFromTerminal * 2, 2);
+            employeeMetrics.EstimatedTimeFromTerminal = expectedRouteTravelTimes[employeeMetrics.RouteNumber];
+            return  Math.Round((employeeMetrics.EndTime-employeeMetrics.StartTime) - employeeMetrics.EstimatedTimeFromTerminal * 2, 2);
 
-            return singleEmpData.TotalTimeDriving;
+            
+        }
+
+        public double EstimatedStopsPerHour(SingleEmployeeMetrics employeeMetrics)
+        {
+            return Math.Round(AdjustDeliveryHourForTravelTime(employeeMetrics) / employeeMetrics.TotalStops * 100, 2);
         }
     }
 }

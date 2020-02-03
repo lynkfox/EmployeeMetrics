@@ -38,8 +38,9 @@ namespace EMUnitTests
         public void DetermineExpectedOneWayTravelTimeFromRouteNumber()
         {
             SingleEmployeeMetrics singleEmpData = SetupSingleEmployeeData();
+            var oneTestingDay = new SingleDayMetrics();
 
-            singleEmpData.AdjustedDeliveryTime = SingleDayMetrics.AdjustDeliveryHourForTravelTime(singleEmpData);
+            singleEmpData.AdjustedDeliveryTime = oneTestingDay.AdjustDeliveryHourForTravelTime(singleEmpData);
             double expectedDeliveryTime = 7.12;
 
             Assert.AreEqual(expectedDeliveryTime, singleEmpData.AdjustedDeliveryTime);
@@ -49,13 +50,29 @@ namespace EMUnitTests
         public void UsingDifferentRouteNumberToCalculateExpectTotalDeliveryTime()
         {
             SingleEmployeeMetrics singleEmpData = SetupSecondEmployeeData();
+            var oneTestingDay = new SingleDayMetrics();
 
-            singleEmpData.AdjustedDeliveryTime = SingleDayMetrics.AdjustDeliveryHourForTravelTime(singleEmpData);
+            singleEmpData.AdjustedDeliveryTime = oneTestingDay.AdjustDeliveryHourForTravelTime(singleEmpData);
             double expectedDeliveryTime = 4;
 
             Assert.AreEqual(expectedDeliveryTime, singleEmpData.AdjustedDeliveryTime);
         }
 
-        
+        [TestMethod]
+        public void CalculateEstimatedStopsPerHour()
+        {
+            SingleEmployeeMetrics singleEmpData = SetupSingleEmployeeData();
+            var oneTestingDay = new SingleDayMetrics();
+
+            singleEmpData.AdjustedDeliveryTime = oneTestingDay.AdjustDeliveryHourForTravelTime(singleEmpData);
+            singleEmpData.StopsPerHour = oneTestingDay.EstimatedStopsPerHour(singleEmpData);
+
+            double expectedSPH = 8.68;
+
+            Assert.AreEqual(expectedSPH, singleEmpData.StopsPerHour);
+
+        }
+
+
     }
 }
