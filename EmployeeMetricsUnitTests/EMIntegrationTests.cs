@@ -10,29 +10,22 @@ namespace EMIntegrationTests
     [TestClass]
     public class EMIntegrationTests
     {
-        [TestMethod]
-        public void InputDataFromDailyServiceWorksheetAsCSVfile()
-        {
-            // To Be Written
-
-            //Test That is a .csv filre
-            //Test that it contains an employee, starttime,endtime, stopcount, miles, and routenumber
-        }
 
         [TestMethod]
         public void IntegrationOutputTestForDailyMetrics()
         {
-            SingleDayMetrics MetricsData = GenerateFakeData();
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Data\daily service worksheet.xls");
+            var oneDay = new SingleDayMetrics(path);
 
-            MetricsData.RunMetrics();
+            oneDay.RunMetrics();
 
-            string expectedEmployee = "Goh, Anthony T.";
-            double expectedSPH = 11.5;
+            string expectedEmployee = "Woods,Rick Adam";
+            double expectedSPH = 9.38;
 
 
 
-            Assert.IsTrue(MetricsData.Employees.Contains(expectedEmployee));
-            Assert.AreEqual(expectedSPH, MetricsData.Metrics.Where(x => x.Name == expectedEmployee).Select(x=>x.StopsPerHour).FirstOrDefault());
+            Assert.IsTrue(oneDay.Employees.Contains(expectedEmployee));
+            Assert.AreEqual(expectedSPH, oneDay.Metrics.Where(x => x.Name == expectedEmployee).Select(x=>x.StopsPerHour).FirstOrDefault());
             
         }
 
