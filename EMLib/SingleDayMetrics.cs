@@ -11,7 +11,7 @@ namespace EMLib
         public DateTime DateOfMetrics { get; set; }
 
 
-        private string path;
+        public readonly string path;
 
         public SingleDayMetrics(string path)
         {
