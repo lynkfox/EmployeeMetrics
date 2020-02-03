@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 namespace EMLib
 {
@@ -15,7 +16,15 @@ namespace EMLib
 
         public SingleDayMetrics(string path)
         {
-            this.path = path;
+           
+            if(Path.GetExtension(path) != ".xls")
+            {
+                throw new Exception("Not an Excel File");
+            }
+            else
+            {
+                this.path = path;
+            }
         }
 
         public SingleDayMetrics()
